@@ -7,11 +7,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useLanguage } from "@/lib/language";
+import { LanguageToggle } from "@/components/language-toggle";
 import {
   Dumbbell,
   Flame,
   Heart,
-  MapPin,
   Menu,
   Star,
   Target,
@@ -26,11 +27,6 @@ import {
   TrendingDown,
   Send,
   Play,
-  ChevronDown,
-  Sparkles,
-  Shield,
-  Award,
-  Zap as Lightning,
 } from "lucide-react";
 
 const fadeInUp = {
@@ -76,6 +72,7 @@ export default function Home() {
     message: "",
   });
   const [mounted, setMounted] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setMounted(true);
@@ -157,18 +154,18 @@ export default function Home() {
   ];
 
   const stats = [
-    { value: "250+", label: "Transformados", icon: Trophy, delay: 0 },
-    { value: "97%", label: "Satisfacción", icon: Heart, delay: 0.1 },
-    { value: "6+", label: "Años experiencia", icon: Calendar, delay: 0.2 },
-    { value: "25-45", label: "Edad promedio", icon: Users, delay: 0.3 },
+    { value: "250+", labelKey: "stats.transformed", icon: Trophy, delay: 0 },
+    { value: "97%", labelKey: "stats.satisfaction", icon: Heart, delay: 0.1 },
+    { value: "6+", labelKey: "stats.experience", icon: Calendar, delay: 0.2 },
+    { value: "25-45", labelKey: "stats.age", icon: Users, delay: 0.3 },
   ];
 
   const problems = [
-    "No sabes por dónde empezar sin conocimiento de gimnasio",
-    "Dietas que no funcionan con comida halal",
-    "Falta de motivación y constancia",
-    "Sientes que el fitness es solo para ciertos tipos",
-    "No encajas en gyms convencionales",
+    "problem.1",
+    "problem.2",
+    "problem.3",
+    "problem.4",
+    "problem.5",
   ];
 
   const features = [
@@ -230,26 +227,42 @@ export default function Home() {
               </span>
             </motion.div>
             <div className="hidden md:flex items-center gap-8">
-              {["Programa", "Resultados", "Sobre Mí"].map((item, i) => (
-                <motion.a
-                  key={item}
-                  href={item === "Programa" ? "#programa" : item === "Resultados" ? "#resultados" : "#sobre-mi"}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="text-sm text-muted-foreground hover:text-green-400 transition-colors"
-                >
-                  {item}
-                </motion.a>
-              ))}
+              <motion.a
+                href="#programa"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="text-sm text-muted-foreground hover:text-green-400 transition-colors"
+              >
+                {t("nav.programa")}
+              </motion.a>
+              <motion.a
+                href="#resultados"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-sm text-muted-foreground hover:text-green-400 transition-colors"
+              >
+                {t("nav.resultados")}
+              </motion.a>
+              <motion.a
+                href="#sobre-mi"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-sm text-muted-foreground hover:text-green-400 transition-colors"
+              >
+                {t("nav.sobre-mi")}
+              </motion.a>
+              <LanguageToggle />
               <motion.a
                 href="#apuntate"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
+                transition={{ delay: 0.4 }}
                 className="px-4 py-2 rounded-lg bg-green-500 hover:bg-green-600 text-black font-medium transition-all hover:shadow-lg hover:shadow-green-500/25"
               >
-                Apúntate
+                {t("nav.apuntate")}
               </motion.a>
             </div>
             <button
@@ -298,7 +311,7 @@ export default function Home() {
               <motion.div variants={fadeInUp} className="mb-6">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium">
                   <Flame className="w-4 h-4" />
-                  Programa AL-ASHIDDA
+                  {t("hero.badge")}
                 </span>
               </motion.div>
               <motion.h1
@@ -306,19 +319,18 @@ export default function Home() {
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
               >
                 <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-                  Cuerpo Fuerte.
+                  {t("hero.title1")}
                 </span>
                 <br />
                 <span className="bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
-                  Fe Firme.
+                  {t("hero.title2")}
                 </span>
               </motion.h1>
               <motion.p
                 variants={fadeInUp}
                 className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0"
               >
-                Transforma tu cuerpo y tu Iman. Pierde barriga, gana músculo y
-                construye disciplina — sin comprometer tus valores.
+                {t("hero.subtitle")}
               </motion.p>
               <motion.div
                 variants={fadeInUp}
@@ -330,7 +342,7 @@ export default function Home() {
                   whileTap={{ scale: 0.98 }}
                   className="group px-8 py-4 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-black font-semibold text-lg flex items-center justify-center gap-2 hover:shadow-xl hover:shadow-green-500/30 transition-all"
                 >
-                  Empieza Tu Transformación
+                  {t("hero.cta1")}
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.a>
                 <motion.a
@@ -340,7 +352,7 @@ export default function Home() {
                   className="px-8 py-4 rounded-xl border border-border hover:border-green-500/50 text-lg flex items-center justify-center gap-2 transition-all hover:bg-green-500/5"
                 >
                   <Play className="w-5 h-5" />
-                  Ver Programa
+                  {t("hero.cta2")}
                 </motion.a>
               </motion.div>
               <motion.div
@@ -367,7 +379,7 @@ export default function Home() {
                     ))}
                   </div>
                   <p className="text-muted-foreground mt-1">
-                    250+ hombres transformados
+                    {t("hero.reviews")}
                   </p>
                 </div>
               </motion.div>
@@ -445,7 +457,7 @@ export default function Home() {
                 <div className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
                   {stat.value}
                 </div>
-                <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
+                <div className="text-sm text-muted-foreground mt-1">{t(stat.labelKey)}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -461,14 +473,14 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-                ¿Te Identificas?
-              </span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Como hombre musulmán de 25-45 años, quizás hayas intentado de todo pero nada funciona...
-            </p>
+<h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                  {t("problem.title")}
+                </span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                {t("problem.subtitle")}
+              </p>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {problems.map((problem, index) => (
@@ -483,7 +495,7 @@ export default function Home() {
                 <div className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0">
                   <X className="w-4 h-4 text-red-400" />
                 </div>
-                <p className="text-sm">{problem}</p>
+                <p className="text-sm">{t(problem)}</p>
               </motion.div>
             ))}
           </div>
@@ -493,9 +505,9 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mt-12"
           >
-            <p className="text-lg font-medium bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
-              Existe una mejor manera...
-            </p>
+<p className="text-lg font-medium bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+                {t("problem.solution")}
+              </p>
           </motion.div>
         </div>
       </section>
