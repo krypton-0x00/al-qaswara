@@ -86,37 +86,35 @@ export default function Home() {
   const programs = [
     {
       title: "AL-ASHIDDA",
-      subtitle: "Programa Completo",
+      subtitleKey: "features.program",
       price: "$97",
       period: "/mes",
       features: [
-        "Plan de entrenamiento personalizado",
-        "Plan nutricional halal",
-        "Seguimiento semanal",
-        "Grupo de apoyo WhatsApp",
-        "Videos de ejercicios",
-        "Soporte directo 24/7",
+        "features.feature.1",
+        "features.feature.2",
+        "features.feature.3",
+        "features.feature.4",
+        "features.feature.5",
+        "features.feature.6",
       ],
       popular: true,
       gradient: "from-green-500/20 to-emerald-500/10",
-      borderGradient: "hover:border-green-500/50",
     },
     {
       title: "TRANSFORMACIÓN",
-      subtitle: "90 Días Intensivo",
+      subtitleKey: "programs.90days",
       price: "$247",
       period: "",
       features: [
-        "Todo lo del programa AL-ASHIDDA",
-        "Transformación completa en 90 días",
-        "3 sesiones de videollamada",
-        "Plan de suplementos halal",
-        "Acceso a comunidad VIP",
-        "Garantía de resultados",
+        "programs.90days.feature.1",
+        "programs.90days.feature.2",
+        "programs.90days.feature.3",
+        "programs.90days.feature.4",
+        "programs.90days.feature.5",
+        "programs.90days.feature.6",
       ],
       popular: false,
       gradient: "from-amber-500/20 to-orange-500/10",
-      borderGradient: "hover:border-amber-500/50",
     },
   ];
 
@@ -171,26 +169,26 @@ export default function Home() {
   const features = [
     {
       icon: Dumbbell,
-      title: "Entrenamiento Efectivo",
-      desc: "Ejercicios adaptados que puedes hacer en casa o gym",
+      titleKey: "features.1.title",
+      descKey: "features.1.desc",
       gradient: "from-green-500/20 to-green-600/10",
     },
     {
       icon: Zap,
-      title: "Nutrición Halal",
-      desc: "Planes de comida que respetan tu dieta islámica",
+      titleKey: "features.2.title",
+      descKey: "features.2.desc",
       gradient: "from-amber-500/20 to-amber-600/10",
     },
     {
       icon: Users,
-      title: "Comunidad de Apoyo",
-      desc: "Grupo privado de WhatsApp con hombres como tú",
+      titleKey: "features.3.title",
+      descKey: "features.3.desc",
       gradient: "from-blue-500/20 to-blue-600/10",
     },
     {
       icon: Target,
-      title: "Seguimiento Personal",
-      desc: "Check-ins semanales para mantenerte accountable",
+      titleKey: "features.4.title",
+      descKey: "features.4.desc",
       gradient: "from-purple-500/20 to-purple-600/10",
     },
   ];
@@ -522,14 +520,13 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-                El Programa{" "}
+                {t("features.title")}
                 <span className="bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
-                  AL-ASHIDDA
+                  {t("features.title2")}
                 </span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Un sistema probado diseñado específicamente para hombres muslims que quieren
-                transformar su cuerpo sin sacrificar su fe.
+                {t("features.subtitle")}
               </p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {features.map((item, index) => (
@@ -542,8 +539,8 @@ export default function Home() {
                     className={`p-4 rounded-xl bg-gradient-to-br ${item.gradient} border border-green-500/10 hover:border-green-500/30 transition-all`}
                   >
                     <item.icon className="w-6 h-6 text-green-400 mb-2" />
-                    <h3 className="font-semibold mb-1">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    <h3 className="font-semibold mb-1">{t(item.titleKey)}</h3>
+                    <p className="text-sm text-muted-foreground">{t(item.descKey)}</p>
                   </motion.div>
                 ))}
               </div>
@@ -559,29 +556,29 @@ export default function Home() {
                 className="relative rounded-3xl bg-gradient-to-br from-green-500/10 to-emerald-500/5 border border-green-500/30 p-8 hover:shadow-xl hover:shadow-green-500/10 transition-all"
               >
                 <div className="absolute top-0 right-0 px-4 py-1 rounded-bl-xl rounded-tr-3xl bg-green-500 text-black text-sm font-medium">
-                  Más Popular
+                  {t("features.popular")}
                 </div>
                 <div className="pt-4">
                   <div className="text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent mb-2">
-                    AL-ASHIDDA
+                    {t("features.badge")}
                   </div>
-                  <p className="text-muted-foreground mb-6">Programa Completo</p>
+                  <p className="text-muted-foreground mb-6">{t("features.program")}</p>
                   <div className="mb-6">
                     <span className="text-5xl font-bold text-white">$97</span>
                     <span className="text-muted-foreground">/mes</span>
                   </div>
                   <ul className="space-y-3 mb-6">
                     {[
-                      "Plan de entrenamiento personalizado",
-                      "Plan nutricional halal",
-                      "Seguimiento semanal",
-                      "Grupo de apoyo WhatsApp",
-                      "Videos de ejercicios",
-                      "Soporte directo 24/7",
+                      "features.feature.1",
+                      "features.feature.2",
+                      "features.feature.3",
+                      "features.feature.4",
+                      "features.feature.5",
+                      "features.feature.6",
                     ].map((feature, index) => (
                       <li key={index} className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-green-400" />
-                        <span className="text-sm">{feature}</span>
+                        <span className="text-sm">{t(feature)}</span>
                       </li>
                     ))}
                   </ul>
@@ -591,7 +588,7 @@ export default function Home() {
                     whileTap={{ scale: 0.98 }}
                     className="block w-full py-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-black font-semibold text-center hover:shadow-xl hover:shadow-green-500/30 transition-all"
                   >
-                    Comenzar Ahora
+                    {t("features.cta")}
                   </motion.a>
                 </div>
               </motion.div>
@@ -609,15 +606,14 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-                Elige Tu Camino
-              </span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Dos programas diseñados para diferentes niveles de compromiso.
-              Todos incluyen acceso a la comunidad AL-ASHIDDA.
-            </p>
+<h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                  {t("programs.title")}
+                </span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                {t("programs.subtitle")}
+              </p>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {programs.map((program, index) => (
@@ -636,12 +632,12 @@ export default function Home() {
                 >
                   {program.popular && (
                     <div className="absolute top-0 right-0 px-4 py-1 rounded-bl-xl rounded-tr-3xl bg-green-500 text-black text-sm font-medium">
-                      Recomendado
+                      {t("programs.recommended")}
                     </div>
                   )}
                   <div className="pt-4">
                     <div className="text-2xl font-bold mb-2">{program.title}</div>
-                    <p className="text-muted-foreground mb-6">{program.subtitle}</p>
+                    <p className="text-muted-foreground mb-6">{t(program.subtitleKey)}</p>
                     <div className="mb-6">
                       <span className="text-4xl font-bold text-white">{program.price}</span>
                       <span className="text-muted-foreground">{program.period}</span>
@@ -650,7 +646,7 @@ export default function Home() {
                       {program.features.map((feature, fIndex) => (
                         <li key={fIndex} className="flex items-center gap-2">
                           <Check className="w-4 h-4 text-green-400" />
-                          <span className="text-sm">{feature}</span>
+                          <span className="text-sm">{t(feature)}</span>
                         </li>
                       ))}
                     </ul>
@@ -664,7 +660,7 @@ export default function Home() {
                           : "border border-border hover:border-green-500/50"
                       }`}
                     >
-                      Elegir Este Plan
+                      {t("programs.choose")}
                     </motion.a>
                   </div>
                 </motion.div>
@@ -683,14 +679,14 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-                Resultados Reales
-              </span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Hombres como tú que decidieron transformar sus vidas con el programa AL-ASHIDDA.
-            </p>
+<h2 className="text-3xl sm:text-4xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                  {t("testimonials.title")}
+                </span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                {t("testimonials.subtitle")}
+              </p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
@@ -782,22 +778,17 @@ export default function Home() {
             >
               <h2 className="text-3xl sm:text-4xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-                  Sobre Mí
+                  {t("about.title")}
                 </span>
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Soy Coach Al Qaswara — entrenador de fitness especializado en ayudar a
-                hombres muslims a alcanzar su mejor versión física y espiritual.
+                {t("about.1")}
               </p>
               <p className="text-muted-foreground mb-6">
-                Después de años de experiencia en gyms convencionales y años de
-                estudiar el Quran y la Sunnah, desarrollé el método AL-ASHIDDA — un
-                programa que combina entrenamiento efectivo con principios islámicos.
+                {t("about.2")}
               </p>
               <p className="text-muted-foreground mb-8">
-                Mi misión es simple: ayudarte a construir un cuerpo fuerte que honre a
-                Allah, te haga merecedor del respeto de tu familia y comunidad, y te
-                prepare para las responsabilidades de la vida.
+                {t("about.3")}
               </p>
               <motion.a
                 href="https://instagram.com/al_qaswara"
@@ -808,7 +799,7 @@ export default function Home() {
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border hover:border-green-500/50 transition-all"
               >
                 <Send className="w-5 h-5" />
-                @al_qaswara
+                {t("about.follow")}
               </motion.a>
             </motion.div>
           </div>
@@ -835,11 +826,10 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="text-3xl font-bold mb-2"
                 >
-                  ¿Listo Para Transformarte?
+                  {t("cta.title")}
                 </motion.h3>
                 <p className="text-muted-foreground mb-8">
-                  Completa el formulario y me pondré en contacto contigo en menos de 24
-                  horas para discutir tu plan de transformación.
+                  {t("cta.subtitle")}
                 </p>
               </div>
               {isSubmitted ? (
@@ -855,10 +845,9 @@ export default function Home() {
                   >
                     <Check className="w-8 h-8 text-green-400" />
                   </motion.div>
-                  <h3 className="text-2xl font-bold mb-2">¡Solicitud Enviada!</h3>
+                  <h3 className="text-2xl font-bold mb-2">{t("success.title")}</h3>
                   <p className="text-muted-foreground">
-                    Te contactaré por WhatsApp lo antes posible. İnşallah,
-                    juntos lograremos tu transformación.
+                    {t("success.message")}
                   </p>
                 </motion.div>
               ) : (
@@ -866,11 +855,11 @@ export default function Home() {
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name" className="text-sm text-muted-foreground">
-                        Nombre Completo
+                        {t("cta.name")}
                       </Label>
                       <Input
                         id="name"
-                        placeholder="Tu nombre"
+                        placeholder={t("cta.name.placeholder")}
                         required
                         value={formData.name}
                         onChange={(e) =>
@@ -881,12 +870,12 @@ export default function Home() {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email" className="text-sm text-muted-foreground">
-                        Email
+                        {t("cta.email")}
                       </Label>
                       <Input
                         id="email"
                         type="email"
-                        placeholder="tu@email.com"
+                        placeholder={t("cta.email.placeholder")}
                         required
                         value={formData.email}
                         onChange={(e) =>
@@ -898,12 +887,12 @@ export default function Home() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="whatsapp" className="text-sm text-muted-foreground">
-                      WhatsApp
+                      {t("cta.whatsapp")}
                     </Label>
                     <Input
                       id="whatsapp"
                       type="tel"
-                      placeholder="+34 600 000 000"
+                      placeholder={t("cta.whatsapp.placeholder")}
                       required
                       value={formData.whatsapp}
                       onChange={(e) =>
@@ -914,11 +903,11 @@ export default function Home() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="goal" className="text-sm text-muted-foreground">
-                      ¿Cuál es tu objetivo principal?
+                      {t("cta.goal")}
                     </Label>
                     <Textarea
                       id="goal"
-                      placeholder="Ej: Quiero perder 15kg de grasa y ganar masa muscular para ser un mejor ejemplo para mis hijos..."
+                      placeholder={t("cta.goal.placeholder")}
                       required
                       value={formData.goal}
                       onChange={(e) =>
@@ -933,12 +922,11 @@ export default function Home() {
                     whileTap={{ scale: 0.98 }}
                     className="w-full py-4 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 text-black font-semibold text-lg hover:shadow-xl hover:shadow-green-500/30 transition-all"
                   >
-                    Enviar Solicitud
+                    {t("cta.submit")}
                     <ArrowRight className="inline-block ml-2 w-5 h-5" />
                   </motion.button>
                   <p className="text-xs text-center text-muted-foreground">
-                    Al enviar este formulario, aceptas que me contacte contigo por
-                    WhatsApp o email para discutir tu programa de transformación.
+                    {t("cta.disclaimer")}
                   </p>
                 </form>
               )}
@@ -959,34 +947,31 @@ export default function Home() {
                 </span>
               </div>
               <p className="text-sm text-muted-foreground">
-                Transformando hombres muslims desde 2018. Cuerpo fuerte, fe firme.
+                {t("footer.copyright")}
               </p>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Enlaces</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                {["Programa AL-ASHIDDA", "Resultados", "Sobre Mí", "Apúntate"].map((item) => (
-                  <li key={item}>
+                {[
+                  { key: "footer.programa", href: "#programa" },
+                  { key: "footer.results", href: "#resultados" },
+                  { key: "footer.about", href: "#sobre-mi" },
+                  { key: "footer.signup", href: "#apuntate" },
+                ].map((item) => (
+                  <li key={item.key}>
                     <a
-                      href={
-                        item === "Programa AL-ASHIDDA"
-                          ? "#programa"
-                          : item === "Resultados"
-                          ? "#resultados"
-                          : item === "Sobre Mí"
-                          ? "#sobre-mi"
-                          : "#apuntate"
-                      }
+                      href={item.href}
                       className="hover:text-green-400 transition-colors"
                     >
-                      {item}
+                      {t(item.key)}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Sígueme</h4>
+              <h4 className="font-semibold mb-4">{t("footer.follow")}</h4>
               <motion.a
                 href="https://instagram.com/al_qaswara"
                 target="_blank"
@@ -999,8 +984,8 @@ export default function Home() {
             </div>
           </div>
           <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
-            <p>© 2026 Al Qaswara. Todos los derechos reservados.</p>
-            <p className="mt-2 text-xs">Cuerpo fuerte y una fe firme. 🕌</p>
+            <p>© 2026 Al Qaswara. {t("footer.rights")}</p>
+            <p className="mt-2 text-xs">{t("footer.copyright")}</p>
           </div>
         </div>
       </footer>
